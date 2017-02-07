@@ -1,0 +1,6 @@
+node_modules/
+dist/
+resource/
+__MACOSXM
+npm-debug.log
+.idea
