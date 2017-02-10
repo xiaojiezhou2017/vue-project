@@ -6,3 +6,6 @@
 支持sass语法
 
 <style lang="sass" rel="stylesheets/sass">
+
+<script type="text/ecmascript-6">
+让webstorm支持es6语法，不会报错
