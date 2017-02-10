@@ -1,0 +1,8 @@
+------------vue项目的笔记----------
+<style style="stylesheet/stylus" type="text/css">
+<style>
+是为了让webstorm能够支持stylus的语法，不会出现报错
+
+支持sass语法
+
+<style lang="sass" rel="stylesheets/sass">
