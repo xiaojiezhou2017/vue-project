@@ -1,14 +1,22 @@
 var path = require('path')
 var config = require('../config')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
-
+/**
+ * 生成assets目录
+ * @param _path
+ * @returns {string|*}
+ */
 exports.assetsPath = function (_path) {
   var assetsSubDirectory = process.env.NODE_ENV === 'production'
     ? config.build.assetsSubDirectory
     : config.dev.assetsSubDirectory
   return path.posix.join(assetsSubDirectory, _path)
 }
-
+/**
+ * 生成各种css的loader
+ * @param options
+ * @returns {{css: *, postcss: *, less: *, sass: *, scss: *, stylus: *, styl: *}}
+ */
 exports.cssLoaders = function (options) {
   options = options || {}
   // generate loader string to be used with extract text plugin
