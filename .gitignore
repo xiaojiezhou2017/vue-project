@@ -4,3 +4,4 @@ resource/
 __MACOSXM
 npm-debug.log
 .idea
+__MACOSX/
