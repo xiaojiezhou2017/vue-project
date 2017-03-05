@@ -22,8 +22,34 @@ var autoOpenBrowser = !!config.dev.autoOpenBrowser
 // https://github.com/chimurai/http-proxy-middleware
 var proxyTable = config.dev.proxyTable //设置代理
 
+/** 引入数据文件 **/
+var appDate=require(path.join(__dirname,'../','data.json'));
 var app = express()
+/** 定义路由 **/
+var apiRouters=express.Router();
+
+apiRouters.get('/seller',function(req,res,next){
+  res.json({
+    status:1,
+    data:appDate.seller
+  })
+});
+apiRouters.get('/goods',function(req,res,next){
+  res.json({
+    status:1,
+    data:appDate.goods
+  })
+});
+apiRouters.get('/rating',function(req,res,next){
+  res.json({
+    status:1,
+    data:appDate.ratings
+  })
+});
+
+app.use('/api',apiRouters);
 var compiler = webpack(webpackConfig)
+
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
   /**在webpack.base.conf里面
@@ -77,6 +103,7 @@ var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsS
 app.use(staticPath, express.static('./static'))
 /**定义服务器访问的地址和端口**/
 var uri = 'http://localhost:' + port
+
 
 devMiddleware.waitUntilValid(function () {
   console.log('> Listening at ' + uri + '\n')

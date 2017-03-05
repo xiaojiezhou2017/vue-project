@@ -1,0 +1,55 @@
+html, body
+  font-weight: 200
+  line-height: 1
+  font-famil: 'PingFang SC', 'STHeitiSc-Light', 'Helvetion-Light', arial, sans-serif
+
+@media (min-device-pixel-ratio: 1.5),(-webkit-min-device-pixel-ratio: 1.5)
+  .border-1px
+    &::after
+      -webkit-transform: scaleY(0.7)
+      transform: scaleY(0.7);
+
+@media (min-device-pixel-ratio: 2),(-webkit-min-device-pixel-ratio: 2)
+  .border-1px
+    &::after
+      -webkit-transform: scaleY(0.5)
+      transform: scaleY(0.5);
+
+.clearfix
+  display: inline-block
+  &:after
+    display: block
+    content: '.'
+    height: 0
+    line-height: 0
+    clear: both
+    visibility: hidden
+
+.fade-enter-active, .fade-leave-active
+  transition: all .5s
+
+.fade-enter, .fade-leave-active
+  opacity: 0
+
+.outline-enter-active, .outline-leave-active
+  transition: all 1s
+
+.outline-enter, .outline-leave-active
+  opacity: 0
+
+.fold-enter-active, .fold-leave-active
+  transition: all .5s
+
+.fold-enter
+  transform: translate3D(0, 0, 0) !important
+  opacity: 0
+
+.fold-leave-active
+  transform: translate3D(0, 0, 0) !important
+  opacity: 0
+
+.translate-enter-active, .translate-leave-active
+  transition: 0.3s linear
+
+.translate-enter, .translate-leave-active
+  left: 100%

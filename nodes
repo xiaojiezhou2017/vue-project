@@ -1,0 +1,59 @@
+------------vue项目的笔记----------
+<style style="stylesheet/stylus" type="text/css">
+<style>
+是为了让webstorm能够支持stylus的语法，不会出现报错
+
+支持sass语法
+
+<style lang="sass" rel="stylesheets/sass">
+
+<script type="text/ecmascript-6">
+让webstorm支持es6语法，不会报错
+
+stylus要注意的点
+在打包icon.style文件的时候，在模板引入，字体的url路径老是不对，但是在jsimport的时候，路径就能用，不理解
+
+
+使用stylus的函数要注意
+
+在mainjs里面引入mixin.styl,在模块里面使用函数，可能不会起作用。在js里面打包，<style></style>插入的位置可能是在最后
+而在模块定义引用的函数，可能在它之前，所以可能不会生效。如果在那个模块里面想要用stylus的自定义函数，还是直接引用mixin.styl吧
+
+在向子模版传递数据的时候
+:value="48" 来传递数字
+value="hello world" 来传递字符串
+v-bind:value :value后面绑定的应该是一个表达式，一个单独的字符串，像v-blind:value="hello world"是无法传入到
+组件的，因为这样一个字符串不是一个表达式,vue的属性和方法同样也是表达式,应该用value="hello world"
+
+
+对于vue中过渡效果的理解
+v-enter
+在元素刚插入dom时，v-enter的样式应用到元素上，并且v-enter-active同时也被应用上，在下一帧时，v-enter的类被移除
+此时就会因为v-enter的移除而产生过渡效果
+例如
+.v-enter{
+      opacity:0;
+   }
+.v-enter-active{
+      transition:0.5s;
+   }
+在元素刚插入的时候，v-enter的样式应用到元素上，此时元素的透明度为0，并且v-enter-active被应用到元素上面，定义了
+过渡的时间，下一帧v-enter类移除,变成透明度为1，过渡的效果是由透明度0变为透明度为1
+
+v-leave,v-leave-active
+在元素要进入删除状态的时候，此时添加v-leave类，在下一帧移除，此时v-leave-active类也会应用上，不过v-leave类好像
+没有什么用，因为v-leava添加之后又被很快删除了，回复到原来的状态。不会对过渡产生什么效果
+做法是：将最终的效果应用到v-leave-active上,而不是v-leave上
+
+.v-leave-active{
+      transition:0.4s
+ }
+.v-leave-active{
+      opacity:0
+   }
+这样元素完成从透明度为1，变成透明度为0的这样一个过渡效果
+
+要想理解这些过渡效果，就要理解在什么时机插入什么样的类名。
+
+
+
